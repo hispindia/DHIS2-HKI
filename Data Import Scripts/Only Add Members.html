@@ -45,7 +45,7 @@ var orgunit_code=[];
                 }                         
             },
         });
-    function getresident_id(trackEntityInstance,resident_id,psId)
+    function getResidentid(trackEntityInstance,resident_id,psId)
     {
         var eventID;
             $.ajax({
@@ -73,7 +73,7 @@ var orgunit_code=[];
         return eventID;
     }
 var trackedEntityInstances=[];
-function gettrackentity(householdvalue)
+function getTrackentity(householdvalue)
 {
             $.ajax({
                     async : false,
@@ -86,8 +86,8 @@ function gettrackentity(householdvalue)
                 },
             });
 }
-var FStrackedEntityInstances=[];
-function FSgettrackentity(userID)
+var fsTrackedentityInstances=[];
+function fsGettrackEntity(userID)
 {
             $.ajax({
                     async : false,
@@ -95,13 +95,13 @@ function FSgettrackentity(userID)
                     url: "../api/trackedEntityInstances.json?fields=trackedEntityInstance,orgUnit,attributes[attribute,value]&filter=lciWr6jlTof:EQ:"+userID+"&ouMode=ALL&skipPaging=true",
                     success: function(data){		
                     for(var k=0;k<data.trackedEntityInstances.length;k++){
-                        FStrackedEntityInstances.push(data.trackedEntityInstances[k]);
+                        fsTrackedentityInstances.push(data.trackedEntityInstances[k]);
                     }	
                 },
             });
 }
 var prevdataValues=[],eventID,flag = false;
-function FSgetresident_id(trackEntityInstance,orgunitId,datevalue,timevalue)
+function fsGetresidentId(trackEntityInstance,orgunitId,datevalue,timevalue)
 {
         $.ajax({
         async : false,
@@ -202,7 +202,7 @@ function loadDE(){
 			dataElements.push(data.dataElements[i]);
 		}
 		console.log("data element length = "+ dataElements.length);	
-		Import();
+		registerHousehold();
 		},
 		error : function(err){
 		console.log("de error" + JSON.stringify(err));
@@ -223,7 +223,7 @@ function formatDate(date) {
     return [year, month, day].join('-');
 }
 
-function Import(){
+function registerHousehold(){
 
         var typearr=[],uniquetypes = [];;
         var datevalue,orgunitcode,nameofdataelement1,nameofdataelement2,dataElementName,dataElementId,nameofdataelement,orgunitId,datevalue1,datevalue2,valueofdataelement,tei,teivalue,formname, gps,
@@ -1379,7 +1379,7 @@ function callajax(){
                         event.dataValues = removeDuplicates(event.dataValues); 
 
                          //For checking if the already exist event is getting updated//
-					    var eventID = getresident_id(gotTei,resident_id_curr_val,psId);
+					    var eventID = getResidentid(gotTei,resident_id_curr_val,psId);
                       
 
                     if(eventID == undefined)
@@ -1515,7 +1515,7 @@ function callajax(){
               backgroundvar.push(backgroundvariable_Path);
               var householdvalue=backgroundvariable_Path["household_id"];
 
-              gettrackentity(householdvalue);
+              getTrackentity(householdvalue);
 
 				if(formpath.case)
 				{
@@ -7520,7 +7520,7 @@ function visit2(received_on_start,received_on_end,offset_value)
               backgroundvar.push(backgroundvariable_Path);
               var householdvalue=backgroundvariable_Path["household_id"];
 
-              gettrackentity(householdvalue);
+              getTrackentity(householdvalue);
 
 				if(formpath.case)
 				{
@@ -13665,7 +13665,7 @@ function visit3(received_on_start,received_on_end,offset_value)
               backgroundvar.push(backgroundvariable_Path);
               var householdvalue=backgroundvariable_Path["household_id"];
 
-              gettrackentity(householdvalue);
+              getTrackentity(householdvalue);
 
 				if(formpath.case)
 				{
@@ -20750,7 +20750,7 @@ function UpdatehouseholdMember(received_on_start,received_on_end,offset_value)
                             timevalue = timeval3[0];
 
                             //For getting the tei and org unit of the registered event//
-                            FSgettrackentity(userID);
+                            fsGettrackEntity(userID);
 
                              //For getting the paths as in commcare//
                                if(formpath.m1000days){
@@ -20779,7 +20779,7 @@ function UpdatehouseholdMember(received_on_start,received_on_end,offset_value)
                                 }
 
                         //For Register and Enrollment of new forms//
-                        if(FStrackedEntityInstances.length == 0)
+                        if(fsTrackedentityInstances.length == 0)
                         {       
                             //console.log("No TrackedEntityInstance Exist");
                             for(var p1=0;p1<orgunit_code.length;p1++){
@@ -20846,9 +20846,9 @@ function UpdatehouseholdMember(received_on_start,received_on_end,offset_value)
                          //If Enrollment already done//
                          else
                             {
-                            for(var p1=0;p1<FStrackedEntityInstances.length;p1++)
+                            for(var p1=0;p1<fsTrackedentityInstances.length;p1++)
                             {								
-                                var trackEntityInstance=FStrackedEntityInstances[p1].trackedEntityInstance;
+                                var trackEntityInstance=fsTrackedentityInstances[p1].trackedEntityInstance;
 
                                for(var p1=0;p1<orgunit_code.length;p1++){
                                 if(orgunit_code[p1].code ==orgunitcode)
@@ -21013,7 +21013,7 @@ function UpdatehouseholdMember(received_on_start,received_on_end,offset_value)
                     }
                     
                     //For checking if the already exist event is getting updated//
-                    FSgetresident_id(gotTei,orgunitId,datevalue,timevalue);
+                    fsGetresidentId(gotTei,orgunitId,datevalue,timevalue);
                     
                     if(prevdataValues.length == 0 && flag == false)
                     {
@@ -21060,7 +21060,7 @@ function UpdatehouseholdMember(received_on_start,received_on_end,offset_value)
                     }      
 						 m1000days_value1_path=[],meeting_value1_path=[],observation_value1_path=[],others_value1_path=[],referral_value1_path=[];
                             }
-                            FStrackedEntityInstances=[],prevdataValues=[],flag = false;
+                            fsTrackedentityInstances=[],prevdataValues=[],flag = false;
 						}
                         }
                    }					   
@@ -21137,7 +21137,7 @@ function UpdatehouseholdMember(received_on_start,received_on_end,offset_value)
                             orgunitcode = backgroundvariable_Path.level2_code;
                             
                         //For getting tei and org unit values of the registered event from the Household Program//
-                        gettrackentity(householdvalue);
+                        getTrackentity(householdvalue);
 
                         if(formpath.case)
                             {
@@ -22839,7 +22839,7 @@ function VMFVisit(received_on_start,received_on_end,offset_value)
                             orgunitcode = backgroundvariable_Path.level2_code;
                             
                         //For getting the tei and org unit of the registered event from the Household program//
-                        gettrackentity(householdvalue);
+                        getTrackentity(householdvalue);
 
                         if(formpath.case)
                             {
