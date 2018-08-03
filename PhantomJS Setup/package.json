@@ -18,7 +18,7 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-	"start": "node phantomFile.js > log.txt"
+	"start": "node phantomFile.js >> log.txt"
   },
   "author": "HISP",
   "license": "ISC"
