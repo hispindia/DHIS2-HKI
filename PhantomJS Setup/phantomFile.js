@@ -24,7 +24,7 @@ for (var setting in page.settings) {
 }
 
 try {
-    var job = new CronJob('00 00 * * *', function() {
+    var job = new CronJob('00 22 * * *', function() {
   
             page.property('onNavigationRequested', function (url, type, willNavigate, main) {
                 console.log('= onNavigationRequested');
