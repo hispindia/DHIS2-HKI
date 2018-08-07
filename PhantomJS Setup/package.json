@@ -1,6 +1,7 @@
 {
   "name": "phantom",
   "version": "1.0.0",
+  "private": true,
   "description": "Data Import from Commcare server to the dhis2 application",
   "main": "phantomFile.js",
   "dependencies": {
