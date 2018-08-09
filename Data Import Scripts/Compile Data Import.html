@@ -19643,7 +19643,7 @@ function updatehouseholdInfo(received_on_start,received_on_end,offset_value){
                             datevalue = datevalue2[0];
 
                             //For getting the tei and org unit of the First registered event//
-                             getTrackentityInstance(teivalue);
+                            var trackedEntityInstances1 = getTrackentityInstance(teivalue);
 							
 						    //For getting the paths as in commcare//
 						   if(formpath.household_consent_yes){
@@ -19754,19 +19754,19 @@ function updatehouseholdInfo(received_on_start,received_on_end,offset_value){
                             dataElementName_split=dataElementName.split("/");
                              len=parseInt(dataElementName_split.length)-1;
                              if(len>0){
-                             dataElementName_val=dataElementName_split[len-1];
-                             dataelement_split = dataElementName_val.split("-");
-                             dataelement_name = dataelement_split[0];
+                            var dataElementName_val=dataElementName_split[len-1];
+                            var dataelement_split = dataElementName_val.split("-");
+                            var dataelement_name = dataelement_split[0];
                              }
                              if(len>1){
-                             dataElementName_val1=dataElementName_split[len-2];
-                             dataelement_split1 = dataElementName_val1.split("-");
-                             dataelement_name1 = dataelement_split1[0];
+                            var dataElementName_val1=dataElementName_split[len-2];
+                            var dataelement_split1 = dataElementName_val1.split("-");
+                            var dataelement_name1 = dataelement_split1[0];
                              }
                             
-                            nameofdataelement1 = dataElementName.substring(dataElementName.lastIndexOf("/") + 1, dataElementName.length);
-                            nameofdataelement2 = nameofdataelement1.split("-");
-                            nameofdataelement = nameofdataelement2[0];
+                           var nameofdataelement1 = dataElementName.substring(dataElementName.lastIndexOf("/") + 1, dataElementName.length);
+                           var nameofdataelement2 = nameofdataelement1.split("-");
+                           var nameofdataelement = nameofdataelement2[0];
 
                                 if(nameofdataelement == 'household_gps_request_update')
                                 {   }
@@ -20344,8 +20344,8 @@ function UpdatehouseholdMember(received_on_start,received_on_end,offset_value)
 				datevalue = datevalue2[0];
 
                 //For getting the tei and org unit of the registered household event//
-                 getTrackentityInstance(teivalue1);
-                
+                 var trackedEntityInstances1 = getTrackentityInstance(teivalue1);
+				 
                  //For getting the paths as in commcare//
                 if(formpath.resident_is_alive)
                 {
@@ -20397,19 +20397,19 @@ function UpdatehouseholdMember(received_on_start,received_on_end,offset_value)
                             dataElementName_split=dataElementName.split("/");
                              len=parseInt(dataElementName_split.length)-1;
                              if(len>0){
-                             dataElementName_val=dataElementName_split[len-1];
-                             dataelement_split = dataElementName_val.split("-");
-                             dataelement_name = dataelement_split[0];
+                            var dataElementName_val=dataElementName_split[len-1];
+                            var dataelement_split = dataElementName_val.split("-");
+                            var dataelement_name = dataelement_split[0];
                              }
                              if(len>1){
-                             dataElementName_val1=dataElementName_split[len-2];
-                             dataelement_split1 = dataElementName_val1.split("-");
-                             dataelement_name1 = dataelement_split1[0];
+                            var dataElementName_val1=dataElementName_split[len-2];
+                            var dataelement_split1 = dataElementName_val1.split("-");
+                            var dataelement_name1 = dataelement_split1[0];
                              }
                             
-                            nameofdataelement1 = dataElementName.substring(dataElementName.lastIndexOf("/") + 1, dataElementName.length);
-                            nameofdataelement2 = nameofdataelement1.split("-");
-                            nameofdataelement = nameofdataelement2[0];
+                           var nameofdataelement1 = dataElementName.substring(dataElementName.lastIndexOf("/") + 1, dataElementName.length);
+                           var nameofdataelement2 = nameofdataelement1.split("-");
+                           var nameofdataelement = nameofdataelement2[0];
                       								
 								 if(nameofdataelement == 'resident_location' || dataelement_name == 'resident_location' || dataelement_name1 == 'resident_location')
                                 {
@@ -20883,19 +20883,19 @@ function UpdatehouseholdMember(received_on_start,received_on_end,offset_value)
                             dataElementName_split=dataElementName.split("/");
                              len=parseInt(dataElementName_split.length)-1;
                              if(len>0){
-                             dataElementName_val=dataElementName_split[len-1];
-                             dataelement_split = dataElementName_val.split("-");
-                             dataelement_name = dataelement_split[0];
+                            var dataElementName_val=dataElementName_split[len-1];
+                            var dataelement_split = dataElementName_val.split("-");
+                            var dataelement_name = dataelement_split[0];
                              }
                              if(len>1){
-                             dataElementName_val1=dataElementName_split[len-2];
-                             dataelement_split1 = dataElementName_val1.split("-");
-                             dataelement_name1 = dataelement_split1[0];
+                            var dataElementName_val1=dataElementName_split[len-2];
+                            var dataelement_split1 = dataElementName_val1.split("-");
+                            var dataelement_name1 = dataelement_split1[0];
                              }
                             
-                            nameofdataelement1 = dataElementName.substring(dataElementName.lastIndexOf("/") + 1, dataElementName.length);
-                            nameofdataelement2 = nameofdataelement1.split("-");
-                            nameofdataelement = nameofdataelement2[0];
+                           var nameofdataelement1 = dataElementName.substring(dataElementName.lastIndexOf("/") + 1, dataElementName.length);
+                           var nameofdataelement2 = nameofdataelement1.split("-");
+                           var nameofdataelement = nameofdataelement2[0];
 
                                 if(nameofdataelement == 'other' || dataelement_name == 'other' || dataelement_name1 == 'other')
                                 {  for(var keys in others_value1_path )
@@ -21297,19 +21297,19 @@ function UpdatehouseholdMember(received_on_start,received_on_end,offset_value)
                             dataElementName_split=dataElementName.split("/");
                              len=parseInt(dataElementName_split.length)-1;
                              if(len>0){
-                             dataElementName_val=dataElementName_split[len-1];
-                             dataelement_split = dataElementName_val.split("-");
-                             dataelement_name = dataelement_split[0];
+                            var dataElementName_val=dataElementName_split[len-1];
+                            var dataelement_split = dataElementName_val.split("-");
+                            var dataelement_name = dataelement_split[0];
                              }
                              if(len>1){
-                             dataElementName_val1=dataElementName_split[len-2];
-                             dataelement_split1 = dataElementName_val1.split("-");
-                             dataelement_name1 = dataelement_split1[0];
+                            var dataElementName_val1=dataElementName_split[len-2];
+                            var dataelement_split1 = dataElementName_val1.split("-");
+                            var dataelement_name1 = dataelement_split1[0];
                              }
                             
-                            nameofdataelement1 = dataElementName.substring(dataElementName.lastIndexOf("/") + 1, dataElementName.length);
-                            nameofdataelement2 = nameofdataelement1.split("-");
-                            nameofdataelement = nameofdataelement2[0];
+                           var nameofdataelement1 = dataElementName.substring(dataElementName.lastIndexOf("/") + 1, dataElementName.length);
+                           var nameofdataelement2 = nameofdataelement1.split("-");
+                           var nameofdataelement = nameofdataelement2[0];
 
                                 if(nameofdataelement == 'fchv_checklist_consent' || dataelement_name == 'fchv_checklist_consent' || dataelement_name1 == 'fchv_checklist_consent')
                                 {  for(var keys in formpathval )
@@ -23043,19 +23043,19 @@ function VMFVisit(received_on_start,received_on_end,offset_value)
                             dataElementName_split=dataElementName.split("/");
                              len=parseInt(dataElementName_split.length)-1;
                              if(len>0){
-                             dataElementName_val=dataElementName_split[len-1];
-                             dataelement_split = dataElementName_val.split("-");
-                             dataelement_name = dataelement_split[0];
+                            var dataElementName_val=dataElementName_split[len-1];
+                            var dataelement_split = dataElementName_val.split("-");
+                            var dataelement_name = dataelement_split[0];
                              }
                              if(len>1){
-                             dataElementName_val1=dataElementName_split[len-2];
-                             dataelement_split1 = dataElementName_val1.split("-");
-                             dataelement_name1 = dataelement_split1[0];
+                            var dataElementName_val1=dataElementName_split[len-2];
+                            var dataelement_split1 = dataElementName_val1.split("-");
+                            var dataelement_name1 = dataelement_split1[0];
                              }
                             
-                            nameofdataelement1 = dataElementName.substring(dataElementName.lastIndexOf("/") + 1, dataElementName.length);
-                            nameofdataelement2 = nameofdataelement1.split("-");
-                            nameofdataelement = nameofdataelement2[0];
+                           var nameofdataelement1 = dataElementName.substring(dataElementName.lastIndexOf("/") + 1, dataElementName.length);
+                           var nameofdataelement2 = nameofdataelement1.split("-");
+                           var nameofdataelement = nameofdataelement2[0];
 
                                 if(nameofdataelement == 'vmf_checklist_consent' || dataelement_name == 'vmf_checklist_consent' || dataelement_name1 == 'vmf_checklist_consent')
                                 {  for(var keys in formpathval )
