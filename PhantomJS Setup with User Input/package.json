@@ -1,5 +1,5 @@
 {
-  "name": "phantom_practice",
+  "name": "phantom",
   "version": "1.0.0",
   "private": true,
   "description": "Data Import from Commcare server to the dhis2 application",
@@ -9,7 +9,7 @@
     "cron-parser": "^2.4.1",
     "phantom": "^4.0.5",
     "phantomjs": "^2.1.7",
-    "promise": "^8.0.1",
+    "promise": "^8.0.1"
   },
   "devDependencies": {},
   "scripts": {
